@@ -1,25 +1,36 @@
-<?php
-Class Kvadratnoe extends Lineynoe {
-    protected function dis($a, $b, $c) {
-		$x = ($b**2)-4*$a*$c;
-		return $x;
-	}
-	public function qu_solve($a, $b, $c){
-		$d = $this->dis($a,$b,$c);
-		if($a == 0){
-			return $this->solve($b,$c);
+﻿<?php namespace rudakov;
+
+use core\EquationInterface;
+
+Class Kvadratnoe extends Lineynoe implements EquationInterface{
+	
+	protected function dis($a, $b, $c){
+		return ($b**2)-4*$a*$c;
 		}
-		if ($d > 0) {
-			return $this->X=array (
-				-($b+sqrt($d)/(2*$a)),
-				-($b-sqrt($d)/(2*$a))
-			);
+	
+	public function solve($a, $b, $c){
+
+		$x = $this->dis($a, $b, $c);
+
+	    if($a == 0){
+	        return $this->li_solve($b,$c);
+	    }
+        MyLog::log("Определено, что это квадратное уравнение");
+		if ($x > 0){
+		    return $this->X=array(
+		        (-$b+sqrt($x))/(2*$a),
+                (-$b-sqrt($x))/(2*$a)
+		        );
 		}
 		
-		if ($d == 0) {
+		if($x == 0){
 			return $this->X=array(-($b/(2*$a)));
 		}
-		return $this->X=NULL;
+
+		throw new RudakovException("Ошибка: уравнение не имеет корней.");
+		
 	}
+	
 }
+
 ?>

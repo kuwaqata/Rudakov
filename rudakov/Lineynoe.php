@@ -1,11 +1,18 @@
-<?php 
-Class Lineynoe {
-	public function solve ($a,$b) {
-		if ($a == 0){
-		  return NULL;
-		}
-		return $this->X=-($b/$a);
-	}
-	protected $X;
+﻿<?php namespace rudakov;
+
+Class Lineynoe
+{
+    public function li_solve($a, $b)
+    {
+
+        if ($a == 0) {
+            throw new RudakovException("Ошибка: уравнения не существует.");
+        }
+        MyLog::log("Определено, что это линейное уравнение");
+        return $this->X = array(-($b / $a));
+    }
+
+    protected $X;
 }
+
 ?>
