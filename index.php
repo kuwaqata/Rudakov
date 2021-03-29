@@ -4,18 +4,24 @@ use rudakov\MyLog;
 use rudakov\RudakovException;
 use rudakov\Kvadratnoe;
 
-include "core/EquationInterface.php";
+require_once __DIR__ . './vendor/autoload.php';
+
+/*include "core/EquationInterface.php";
 include "core/LogAbstract.php";
 include "core/LogInterface.php";
 include "rudakov/MyLog.php";
 include "rudakov/Lineynoe.php";
 include "rudakov/Kvadratnoe.php";
-include "rudakov/RudakovException.php";
+include "rudakov/RudakovException.php";*/
 
 ini_set("display_errors", 1);
 error_reporting(-1);
 
 try {
+
+	 if(!is_dir("log")) {
+        mkdir("log", 0700);
+    }
 	
 	MyLog::log("Версия программы: ".trim(file_get_contents('version')));
 	
@@ -40,5 +46,3 @@ try {
 }
 
 MyLog::write();
-
-?>
