@@ -13,7 +13,7 @@
   "minimum-stability": "dev",
 
   "require": {
-    "kuwaqata/rudakov2": "1.1",
+    "kuwaqata/rudakov2": "^1.0",
     "ext-readline": "*"
   },
 
